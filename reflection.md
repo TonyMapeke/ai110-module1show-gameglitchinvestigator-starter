@@ -35,8 +35,9 @@ N/A
 If it passed all of test cases
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
+A manual test I ran was playing the game and making sure the hints worked properly
 - Did AI help you design or understand any tests? How?
-
+The AI generated my test case for me and helped me understand what they did.
 
 ---
 
@@ -46,11 +47,15 @@ If it passed all of test cases
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 - What change did you make that finally gave the game a stable secret number?
 
+Streamlit operates on a linear execution model: every time you interact with a widget the entire Python script reruns from top to bottom. This keeps the UI perfectly synced with your code, it also means the script forgets any local variables once it finishes. To fix this Session State acts as a persistent memory that stays active for the duration of a user's session. I wrapped the random.randint() call in an if "secret" not in st.session_state: check. That means the secret is only generated once.
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+Using pytest for testcases
 - What is one thing you would do differently next time you work with AI on a coding task?
+Use the AI more to find the inital bug
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+Its very good at doing a specifically described task 

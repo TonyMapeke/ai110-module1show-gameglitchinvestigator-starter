@@ -70,8 +70,7 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game:
-    # Bug fix: AI reset attempts to 0, which skipped the first turn display.
-    # I changed it to 1 to match the initial session state.
+    # Bug fix: I changed it to 1 to match the initial session state.
     st.session_state.attempts = 1
     st.session_state.secret = random.randint(1, 100)
     st.success("New game started.")
@@ -97,9 +96,7 @@ if submit:
     else:
         st.session_state.history.append(guess_int)
 
-        # Bug fix: AI coerced secret to str() on even attempts, causing
-        # lexicographic comparison (e.g. '9' > '10' is True). I removed
-        # the type conversion so secret stays an int in both branches.
+        # Bug fix:  I removed the type conversion so secret stays an int in both branches.
         if st.session_state.attempts % 2 == 0:
             secret = st.session_state.secret
         else:
